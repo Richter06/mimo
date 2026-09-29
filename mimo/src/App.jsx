@@ -85,31 +85,8 @@ function App() {
         },
       })
 
-      gsap.from('.highlight__content', {
-        y: 80,
-        opacity: 0,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.highlight',
-          start: 'top 72%',
-          end: 'top 35%',
-          scrub: 0.8,
-        },
-      })
-
       gsap.to('.gifting__words', {
         xPercent: 14,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.gifting',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-
-      gsap.to('.gifting__copy', {
-        y: -40,
         ease: 'none',
         scrollTrigger: {
           trigger: '.gifting',

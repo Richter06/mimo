@@ -80,6 +80,7 @@ function Menu() {
             <motion.a
               className="product__image-wrap"
               href="#encomendas"
+              initial="rest"
               whileHover="hover"
               whileTap={{ scale: 0.985 }}
             >
@@ -92,8 +93,6 @@ function Menu() {
                   rest: { scale: 1 },
                   hover: { scale: 1.06 },
                 }}
-                initial="rest"
-                animate="rest"
                 transition={{ duration: 0.7, ease: [0.2, 0.7, 0.2, 1] }}
               />
               <motion.span
