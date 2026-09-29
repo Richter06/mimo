@@ -88,7 +88,7 @@ const gifts = [
     image:
       'https://images.unsplash.com/photo-1570145820259-b5b80c5c8bd6?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'deixa esse pecado para depois',
-    rightMessage: 'isso definitivamente merece uma caixa',
+    rightMessage: 'isso aqui merece uma caixa',
   },
   {
     id: 'torta-maca',
@@ -123,7 +123,7 @@ const gifts = [
     type: 'mimo divertido',
     image:
       'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1400&q=88',
-    leftMessage: 'talvez hoje seja dia de colher',
+    leftMessage: 'acho que é muito colorido',
     rightMessage: 'isso aqui gritou seu nome',
   },
   {
