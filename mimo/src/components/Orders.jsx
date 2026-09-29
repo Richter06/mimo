@@ -19,7 +19,7 @@ function Orders() {
             Bolos, caixas, mesas doces e encomendas personalizadas. Conta pra
             gente o que você imaginou.
           </p>
-          <a href="https://wa.me/5500000000000" target="_blank" rel="noreferrer">
+          <a href="#encomendas">
             falar com a mimo <span aria-hidden="true">↗</span>
           </a>
         </div>
