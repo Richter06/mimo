@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import './Hero.css'
 
 const heroImage =
-  'https://images.unsplash.com/photo-1641848373054-e6f564023237?auto=format&fit=crop&w=1800&q=85'
+  'https://images.unsplash.com/photo-1611293388250-580b08c4a145?auto=format&fit=crop&w=1800&q=88'
 
 function Hero() {
   return (
@@ -18,14 +18,21 @@ function Hero() {
       <div className="hero__veil" />
 
       <div className="hero__content">
-        <p className="eyebrow hero__eyebrow">doceria artesanal</p>
+        <p className="eyebrow hero__eyebrow">
+          doceria artesanal
+        </p>
 
         <h1 className="hero__title">
           <span className="hero__title-line-wrap">
-            <span className="hero__title-line">Um pequeno</span>
+            <span className="hero__title-line">
+              Um pequeno
+            </span>
           </span>
+
           <span className="hero__title-line-wrap hero__title-line-wrap--offset">
-            <span className="hero__title-line">grande prazer.</span>
+            <span className="hero__title-line">
+              grande prazer.
+            </span>
           </span>
         </h1>
 
@@ -41,7 +48,11 @@ function Hero() {
             aria-label="Conheça os doces"
             whileHover={{ rotate: -6, scale: 1.06 }}
             whileTap={{ scale: 0.96 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+            transition={{
+              type: 'spring',
+              stiffness: 300,
+              damping: 18,
+            }}
           >
             <span>conhecer</span>
             <strong aria-hidden="true">↓</strong>
@@ -49,7 +60,9 @@ function Hero() {
         </div>
       </div>
 
-      <span className="hero__scribble" aria-hidden="true">m</span>
+      <span className="hero__scribble" aria-hidden="true">
+        m
+      </span>
     </section>
   )
 }
