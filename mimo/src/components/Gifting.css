@@ -518,10 +518,32 @@
     overflow: visible;
   }
 
-  /*
-    No mobile o feedback deixa de ocupar as laterais
-    e passa a viver abaixo do baralho.
-  */
+  .gifting__side-note {
+    display: none;
+  }
+
+  .gifting__side-note--top {
+    display: block;
+    top: 0;
+    left: 50%;
+    width: max-content;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .gifting__side-note--top span {
+    display: none;
+  }
+
+  .gifting__side-note--top p {
+    margin: 0;
+    color: var(--berry);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
 
   .gifting__feedback {
     top: auto;
