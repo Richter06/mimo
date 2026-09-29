@@ -1,21 +1,10 @@
-.reveal {
-  opacity: 0;
-  transform: translateY(2.5rem);
-  transition:
-    opacity 900ms cubic-bezier(.2,.7,.2,1),
-    transform 900ms cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.mimo-page {
+  position: relative;
+  overflow: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .mimo-page * {
+    scroll-behavior: auto !important;
   }
 }

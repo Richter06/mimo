@@ -37,9 +37,21 @@
   letter-spacing: -0.075em;
 }
 
-.orders h2 span {
+.orders__headline-line-wrap {
   display: block;
+  overflow: hidden;
+}
+
+.orders__headline-line-wrap--offset {
   margin-left: 0.45em;
+}
+
+.orders__headline-line {
+  display: block;
+  will-change: transform, opacity;
+}
+
+.orders h2 .orders__headline-line-wrap:last-child .orders__headline-line {
   color: var(--butter);
   font-style: italic;
 }
@@ -65,12 +77,6 @@
   letter-spacing: 0.14em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: gap 220ms ease;
-}
-
-.orders__action a:hover,
-.orders__action a:focus-visible {
-  gap: 1rem;
 }
 
 @media (max-width: 760px) {

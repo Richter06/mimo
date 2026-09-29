@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import './Hero.css'
 
 const heroImage =
@@ -19,9 +20,13 @@ function Hero() {
       <div className="hero__content">
         <p className="eyebrow hero__eyebrow">doceria artesanal</p>
 
-        <h1>
-          Um pequeno
-          <span>grande prazer.</span>
+        <h1 className="hero__title">
+          <span className="hero__title-line-wrap">
+            <span className="hero__title-line">Um pequeno</span>
+          </span>
+          <span className="hero__title-line-wrap hero__title-line-wrap--offset">
+            <span className="hero__title-line">grande prazer.</span>
+          </span>
         </h1>
 
         <div className="hero__bottom">
@@ -30,10 +35,17 @@ function Hero() {
             com ninguém.
           </p>
 
-          <a className="circle-link" href="#doces" aria-label="Conheça os doces">
+          <motion.a
+            className="circle-link hero__circle-link"
+            href="#doces"
+            aria-label="Conheça os doces"
+            whileHover={{ rotate: -6, scale: 1.06 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+          >
             <span>conhecer</span>
             <strong aria-hidden="true">↓</strong>
-          </a>
+          </motion.a>
         </div>
       </div>
 

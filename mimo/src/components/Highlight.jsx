@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import './Highlight.css'
 
 const image =
@@ -5,16 +6,26 @@ const image =
 
 function Highlight() {
   return (
-    <section className="highlight reveal">
-      <div className="highlight__image-wrap">
+    <section className="highlight">
+      <motion.div
+        className="highlight__image-wrap"
+        whileHover={{ scale: 1.008 }}
+        transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1] }}
+      >
         <img
           src={image}
           alt="Sobremesa de chocolate com frutas vermelhas"
           loading="lazy"
         />
-      </div>
+      </motion.div>
 
-      <div className="highlight__content">
+      <motion.div
+        className="highlight__content"
+        initial={{ opacity: 0, x: 36 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+      >
         <p className="eyebrow">o mimo da vez</p>
         <h2>
           Chocolate,
@@ -25,10 +36,16 @@ function Highlight() {
           Uma camada cremosa, chocolate intenso e o toque ácido das frutas para
           equilibrar tudo.
         </p>
-        <a className="text-link" href="#encomendas">
+        <motion.a
+          className="text-link"
+          href="#encomendas"
+          whileHover={{ x: 6 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: 'spring', stiffness: 360, damping: 24 }}
+        >
           quero provar <span aria-hidden="true">↗</span>
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
     </section>
   )
 }

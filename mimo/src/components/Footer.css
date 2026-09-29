@@ -2,6 +2,7 @@
   padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 7vw, 7rem) 1.5rem;
   background: var(--ink);
   color: var(--cream);
+  overflow: hidden;
 }
 
 .site-footer__brand {
@@ -10,6 +11,7 @@
   line-height: 0.62;
   letter-spacing: -0.08em;
   transform: translateX(-0.05em);
+  will-change: transform, opacity;
 }
 
 .site-footer__links {

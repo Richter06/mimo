@@ -1,9 +1,16 @@
+import { motion } from 'motion/react'
 import './Footer.css'
 
 function Footer() {
   return (
     <footer className="site-footer">
-      <div className="site-footer__brand">Mimo</div>
+      <motion.div
+        className="site-footer__brand"
+        whileHover={{ x: 8 }}
+        transition={{ type: 'spring', stiffness: 220, damping: 28 }}
+      >
+        Mimo
+      </motion.div>
 
       <div className="site-footer__links">
         <a href="#inicio">voltar ao começo</a>

@@ -1,20 +1,61 @@
+import { motion } from 'motion/react'
 import './Philosophy.css'
 
 function Philosophy() {
   return (
-    <section className="philosophy reveal" id="mimo">
-      <div className="philosophy__aside">
+    <motion.section
+      className="philosophy"
+      id="mimo"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.18 }}
+      variants={{
+        hidden: {},
+        visible: {},
+      }}
+    >
+      <motion.div
+        className="philosophy__aside"
+        variants={{
+          hidden: { opacity: 0, y: 28 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1] }}
+      >
         <p className="eyebrow">sobre a mimo</p>
-        <span className="philosophy__mark" aria-hidden="true">✳</span>
-      </div>
+        <motion.span
+          className="philosophy__mark"
+          aria-hidden="true"
+          initial={{ rotate: -18, scale: 0.7 }}
+          whileInView={{ rotate: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.1, ease: 'backOut' }}
+        >
+          ✳
+        </motion.span>
+      </motion.div>
 
       <div className="philosophy__copy">
-        <p className="philosophy__lead">
+        <motion.p
+          className="philosophy__lead"
+          variants={{
+            hidden: { opacity: 0, y: 42 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 1, ease: [0.2, 0.7, 0.2, 1] }}
+        >
           A gente acredita que um doce não precisa de motivo.
           <em> Mas pode melhorar qualquer momento.</em>
-        </p>
+        </motion.p>
 
-        <div className="philosophy__details">
+        <motion.div
+          className="philosophy__details"
+          variants={{
+            hidden: { opacity: 0, y: 24 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.2, 0.7, 0.2, 1] }}
+        >
           <p>
             Chocolate de verdade, frutas frescas, cremes delicados e receitas
             que deixam a vontade de voltar.
@@ -23,9 +64,9 @@ function Philosophy() {
             Tudo preparado artesanalmente, em pequenos lotes, com tempo para
             cuidar do que realmente importa: o sabor.
           </p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

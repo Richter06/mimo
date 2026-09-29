@@ -18,6 +18,7 @@
   font-family: var(--display);
   font-size: clamp(4rem, 7vw, 7rem);
   line-height: 0.7;
+  transform-origin: center;
 }
 
 .philosophy__copy {
