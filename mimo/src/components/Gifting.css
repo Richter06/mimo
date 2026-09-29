@@ -84,7 +84,12 @@
   display: grid;
   place-items: center;
   perspective: 1200px;
+  overflow: visible;
 }
+
+/* =========================================================
+   CARDS
+   ========================================================= */
 
 .gifting__card {
   position: absolute;
@@ -98,7 +103,7 @@
   cursor: grab;
   touch-action: pan-y;
   user-select: none;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .gifting__card--active {
@@ -109,36 +114,46 @@
   cursor: grabbing;
 }
 
-.gifting__card img {
+/* =========================================================
+   CARD IMAGE
+   ========================================================= */
+
+.gifting__card-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--butter);
+}
+
+.gifting__card-image img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
+  opacity: 1;
   pointer-events: none;
   user-select: none;
 }
+
+/* =========================================================
+   CARD BORDER
+   ========================================================= */
 
 .gifting__card::after {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 4;
   border: 1px solid rgba(255, 248, 236, 0.28);
   pointer-events: none;
 }
 
+/* =========================================================
+   IMAGE SHADE
+   ========================================================= */
+
 .gifting__card-shade {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(23, 18, 20, 0.025) 0%,
-    
-      rgba(23, 18, 20, 0.38) 100%
-    );
-  pointer-events: none;
+  display: none;
 }
 
 /* =========================================================
@@ -148,15 +163,16 @@
 .gifting__feedback {
   position: absolute;
   top: 50%;
-  z-index: 4;
+  z-index: 20;
   display: flex;
   flex-direction: column;
   width: max-content;
-  max-width: 70%;
+  max-width: min(18rem, 32%);
   padding: 0.75rem 0.9rem;
   border: 1px solid currentColor;
-  transform-origin: center;
   pointer-events: none;
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 
 .gifting__feedback span {
@@ -174,18 +190,22 @@
   line-height: 0.95;
 }
 
+/* LEFT */
+
 .gifting__feedback--left {
-  left: 1.5rem;
-  color: #fff8ec;
-  background: rgba(50, 27, 39, 0.82);
-  transform: translateY(-50%) rotate(-7deg);
+  left: -2.5rem;
+  color: var(--butter);
+  background: var(--plum);
+  transform: translateY(-50%);
 }
 
+/* RIGHT */
+
 .gifting__feedback--right {
-  right: 1.5rem;
+  right: -2.5rem;
   color: var(--ink);
-  background: rgba(242, 213, 138, 0.92);
-  transform: translateY(-50%) rotate(7deg);
+  background: var(--butter);
+  transform: translateY(-50%);
 }
 
 /* =========================================================
@@ -197,18 +217,27 @@
   left: 1.5rem;
   right: 1.5rem;
   bottom: 1.5rem;
-  z-index: 3;
+  z-index: 5;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
-  color: var(--cream);
+  color: var(--butter);
+}
+
+.gifting__card-info span:first-child,
+.gifting__card-info h3 {
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.55),
+    1px -1px 0 rgba(0, 0, 0, 0.55),
+    -1px 1px 0 rgba(0, 0, 0, 0.55),
+    1px 1px 0 rgba(0, 0, 0, 0.55);
 }
 
 .gifting__card-info span:first-child {
   display: block;
   margin-bottom: 0.35rem;
-  color: rgba(255, 248, 236, 0.72);
+  color: var(--butter);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.13em;
@@ -217,23 +246,12 @@
 
 .gifting__card-info h3 {
   margin: 0;
+  color: var(--butter);
   font-family: var(--display);
   font-size: clamp(2rem, 4vw, 3.6rem);
   font-weight: 500;
   line-height: 0.88;
   letter-spacing: -0.04em;
-}
-
-.gifting__card-hint {
-  flex-shrink: 0;
-  margin-bottom: 0.25rem;
-  padding: 0.45rem 0.6rem;
-  border: 1px solid rgba(255, 248, 236, 0.4);
-  color: var(--cream);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 /* =========================================================
@@ -299,7 +317,9 @@
   position: relative;
   z-index: 5;
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(16rem, 0.8fr);
   gap: clamp(3rem, 10vw, 12rem);
   align-items: end;
   margin-top: clamp(4rem, 9vw, 9rem);
@@ -404,22 +424,62 @@
    TABLET
    ========================================================= */
 
+@media (max-width: 1100px) {
+  .gifting__deck {
+    width: min(62vw, 38rem);
+    height: min(74vw, 50rem);
+  }
+
+  .gifting__feedback {
+    max-width: 12rem;
+  }
+
+  .gifting__feedback--left {
+    left: -1rem;
+  }
+
+  .gifting__feedback--right {
+    right: -1rem;
+  }
+
+  .gifting__side-note {
+    width: 8rem;
+  }
+
+  .gifting__side-note--top {
+    left: 1%;
+  }
+
+  .gifting__side-note--bottom {
+    right: 1%;
+  }
+}
+
 @media (max-width: 900px) {
   .gifting__stage {
     min-height: 50rem;
   }
 
   .gifting__deck {
-    width: min(66vw, 38rem);
-    height: min(80vw, 48rem);
+    width: min(68vw, 34rem);
+    height: min(78vw, 46rem);
   }
 
-  .gifting__side-note--top {
-    left: 0;
+  .gifting__feedback {
+    max-width: 11rem;
   }
 
-  .gifting__side-note--bottom {
-    right: 0;
+  .gifting__feedback strong {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+  }
+
+  .gifting__side-note {
+    display: none;
+  }
+
+  .gifting__asterisk {
+    right: 8%;
+    top: 12%;
   }
 
   .gifting__footer {
@@ -437,98 +497,85 @@
   }
 
   .gifting__header {
-    align-items: flex-start;
     margin-bottom: 2rem;
   }
 
-  .gifting__index {
-    max-width: 9rem;
-    text-align: right;
-    line-height: 1.4;
-  }
-
   .gifting__stage {
-    min-height: 39rem;
+    min-height: 49rem;
     display: block;
-    padding: 3rem 0 4rem;
+    padding: 2rem 0 8rem;
   }
 
   .gifting__background-type {
-    top: 43%;
-    left: 50%;
-    font-size: clamp(7rem, 29vw, 12rem);
-    line-height: 0.66;
+    top: 38%;
+    font-size: clamp(8rem, 28vw, 13rem);
   }
 
   .gifting__deck {
     width: min(78vw, 25rem);
     height: min(108vw, 34rem);
     margin: 0 auto;
+    overflow: visible;
   }
 
-  .gifting__card-info {
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-  }
-
-  .gifting__card-info h3 {
-    font-size: clamp(1.8rem, 9vw, 2.7rem);
-  }
-
-  .gifting__card-hint {
-    display: none;
-  }
+  /*
+    No mobile o feedback deixa de ocupar as laterais
+    e passa a viver abaixo do baralho.
+  */
 
   .gifting__feedback {
-    max-width: 75%;
+    top: auto;
+    bottom: -6.75rem;
+    left: 50%;
+    right: auto;
+    width: min(88vw, 20rem);
+    max-width: none;
+    min-height: 4.5rem;
+    padding: 0.7rem 0.9rem;
+    box-sizing: border-box;
+    margin-left: -10rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 
-  .gifting__feedback--left {
-    left: 0.8rem;
-  }
-
+  .gifting__feedback--left,
   .gifting__feedback--right {
-    right: 0.8rem;
+    transform: none;
+  }
+
+  .gifting__feedback span {
+    margin-bottom: 0.3rem;
+    font-size: 0.55rem;
   }
 
   .gifting__feedback strong {
-    font-size: 1.35rem;
-  }
-
-  .gifting__side-note {
-    width: 8rem;
-  }
-
-  .gifting__side-note--top {
-    top: 0;
-    left: 0;
-  }
-
-  .gifting__side-note--bottom {
-    right: 0;
-    bottom: 0;
+    max-width: 17rem;
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+    line-height: 0.95;
   }
 
   .gifting__asterisk {
+    right: 4%;
     top: 7%;
-    right: 8%;
     font-size: 3rem;
   }
 
   .gifting__footer {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-    margin-top: 2rem;
+    display: block;
+    margin-top: 3rem;
+  }
+
+  .gifting__message {
+    margin-bottom: 4rem;
   }
 
   .gifting__message h2 {
-    max-width: 25rem;
-    font-size: clamp(3.2rem, 14vw, 5rem);
+    font-size: clamp(3rem, 13vw, 5rem);
   }
 
   .gifting__action {
-    max-width: 25rem;
+    padding-bottom: 0;
   }
 }
 
@@ -536,26 +583,87 @@
    SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 420px) {
+@media (max-width: 520px) {
+  .gifting {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .gifting__header {
+    align-items: flex-end;
+  }
+
+  .gifting__index {
+    max-width: 7rem;
+    text-align: right;
+    line-height: 1.2;
+  }
+
   .gifting__stage {
-    min-height: 36rem;
+    min-height: 46rem;
+    padding-top: 1rem;
   }
 
   .gifting__deck {
     width: 82vw;
     height: 105vw;
+    max-height: none;
   }
 
-  .gifting__side-note {
-    width: 7rem;
+  .gifting__feedback {
+    bottom: -6rem;
+    width: min(88vw, 19rem);
+    margin-left: -9.5rem;
   }
 
-  .gifting__side-note p {
-    font-size: 0.62rem;
+  .gifting__card-info {
+    left: 1.1rem;
+    right: 1.1rem;
+    bottom: 1.1rem;
   }
 
-  .gifting__background-type {
-    font-size: 27vw;
+  .gifting__card-info h3 {
+    font-size: clamp(1.8rem, 8vw, 2.7rem);
+  }
+
+  .gifting__message h2 {
+    font-size: clamp(2.8rem, 14vw, 4.5rem);
+  }
+
+  .gifting__action > p {
+    font-size: 0.84rem;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .gifting__stage {
+    min-height: 44rem;
+  }
+
+  .gifting__deck {
+    width: 84vw;
+    height: 106vw;
+  }
+
+  .gifting__feedback {
+    bottom: -5.5rem;
+    width: min(88vw, 18rem);
+    min-height: 4.25rem;
+    margin-left: -9rem;
+  }
+
+  .gifting__feedback strong {
+    font-size: 1.3rem;
+  }
+
+  .gifting__card-info {
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.9rem;
   }
 }
 
@@ -569,6 +677,6 @@
   }
 
   .gifting__feedback {
-    transform: translateY(-50%);
+    transition: none !important;
   }
 }

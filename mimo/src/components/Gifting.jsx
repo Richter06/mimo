@@ -6,16 +6,15 @@ import {
   useTransform,
 } from 'motion/react'
 import { useState } from 'react'
-
 import './Gifting.css'
 
 const gifts = [
   {
     id: 'morango-baunilha',
     name: 'Morango & baunilha',
-    type: 'bolo delicado',
+    type: 'milkshake delicado',
     image:
-      'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3RyYXdiZXJyeSUyMG1pbGtzaGFrZXxlbnwwfDB8MHx8fDA%3D',
+      'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'talvez seja doce demais',
     rightMessage: 'esse é a sua cara',
   },
@@ -64,13 +63,12 @@ const gifts = [
     leftMessage: 'talvez seja hora de experimentar outro',
     rightMessage: 'olha, temos um favorito aqui',
   },
-
   {
     id: 'red-velvet',
     name: 'Red velvet',
     type: 'bolo macio',
     image:
-      'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkJTIwdmVsdmV0fGVufDB8MHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'bonito, mas seu coração quer outro',
     rightMessage: 'isso aqui foi um sim imediato',
   },
@@ -88,7 +86,7 @@ const gifts = [
     name: 'Brownie & flor de sal',
     type: 'quadrado intenso',
     image:
-      'https://images.unsplash.com/photo-1570145820259-b5b80c5c8bd6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YnJvd25pZXxlbnwwfDB8MHx8fDA%3D',
+      'https://images.unsplash.com/photo-1570145820259-b5b80c5c8bd6?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'deixa esse pecado para depois',
     rightMessage: 'isso definitivamente merece uma caixa',
   },
@@ -97,7 +95,7 @@ const gifts = [
     name: 'Torta de maçã',
     type: 'receita afetiva',
     image:
-      'https://images.unsplash.com/photo-1621743478914-cc8a86d7e7b5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwbGUlMjBwaWV8ZW58MHwwfDB8fHww',
+      'https://images.unsplash.com/photo-1621743478914-cc8a86d7e7b5?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'talvez você esteja procurando outra história',
     rightMessage: 'cheiro de casa em forma de sobremesa',
   },
@@ -106,7 +104,7 @@ const gifts = [
     name: 'Chocolate & morango',
     type: 'clássico mimo',
     image:
-      'https://images.unsplash.com/photo-1559715745-e1b33a271c8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hvY29sYXRlJTIwYW5kJTIwc3RyYXdiZXJyeXxlbnwwfDB8MHx8fDA%3D',
+      'https://images.unsplash.com/photo-1559715745-e1b33a271c8f?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'você está tentando resistir, né?',
     rightMessage: 'esse clássico nunca decepciona',
   },
@@ -142,7 +140,7 @@ const gifts = [
     name: 'Profiteroles',
     type: 'delicadeza francesa',
     image:
-      'https://images.unsplash.com/photo-1602903489862-1fe54b1f5ff2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZml0ZXJvbGVzfGVufDB8MHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1602903489862-1fe54b1f5ff2?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'seu coração pediu outra coisa',
     rightMessage: 'isso aqui está perigosamente tentador',
   },
@@ -151,7 +149,7 @@ const gifts = [
     name: 'Bolo de laranja',
     type: 'bolo afetivo',
     image:
-      'https://images.unsplash.com/photo-1642069251474-5cc71cfdf49b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlJTIwY2FrZXxlbnwwfDB8MHx8fDA%3D',
+      'https://images.unsplash.com/photo-1642069251474-5cc71cfdf49b?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'talvez hoje peça uma aventura',
     rightMessage: 'simples, bonito e impossível de ignorar',
   },
@@ -160,7 +158,7 @@ const gifts = [
     name: 'Chocolate branco & frutas',
     type: 'criação delicada',
     image:
-      'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2hpdGUlMjBjaG9jb2xhdGUlMjBjYWtlfGVufDB8MHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1787755763092-d36f1ffceddc?w=1400&auto=format&fit=crop&q=88',
     leftMessage: 'talvez seja hora de mudar o sabor',
     rightMessage: 'essa combinação sabe conversar',
   },
@@ -175,22 +173,7 @@ const giftDetails = [
 
 const SWIPE_THRESHOLD = 130
 
-function SwipeCard({
-  gift,
-  depth,
-  isTop,
-  onSwipe,
-}) {
-  const controls = useAnimationControls()
-  const x = useMotionValue(0)
-  const prefersReducedMotion = useReducedMotion()
-
-  const rotate = useTransform(
-    x,
-    [-300, 0, 300],
-    [-14, 0, 14]
-  )
-
+function SwipeFeedback({ gift, x, isTop }) {
   const rightFeedbackOpacity = useTransform(
     x,
     [0, SWIPE_THRESHOLD],
@@ -215,104 +198,8 @@ function SwipeCard({
     [1, 0.92]
   )
 
-  const stackScale = 1 - depth * 0.055
-  const stackY = depth * 18
-  const stackRotate = depth === 0 ? 0 : depth % 2 === 0 ? 1 : -1
-
-  const handleDragEnd = async (_, info) => {
-    if (!isTop) return
-
-    const distance = info.offset.x
-    const direction = distance > 0 ? 1 : -1
-
-    if (Math.abs(distance) < SWIPE_THRESHOLD) {
-      await controls.start({
-        x: 0,
-        rotate: 0,
-        transition: {
-          type: 'spring',
-          stiffness: 500,
-          damping: 28,
-        },
-      })
-
-      return
-    }
-
-    await controls.start({
-      x: direction * 620,
-      rotate: direction * 18,
-      opacity: 0,
-      transition: prefersReducedMotion
-        ? {
-            duration: 0.2,
-          }
-        : {
-            type: 'spring',
-            stiffness: 280,
-            damping: 24,
-          },
-    })
-
-    onSwipe(gift.id)
-  }
-
   return (
-    <motion.article
-      className={`gifting__card ${
-        isTop ? 'gifting__card--active' : ''
-      }`}
-      style={{
-        x: isTop ? x : 0,
-        rotate: isTop ? rotate : stackRotate,
-        zIndex: gifts.length - depth,
-      }}
-      animate={
-        isTop
-          ? controls
-          : {
-              scale: stackScale,
-              y: stackY,
-              opacity: depth === 2 ? 0.68 : 0.88,
-            }
-      }
-      drag={isTop ? 'x' : false}
-      dragDirectionLock
-      dragElastic={0.72}
-      dragMomentum={false}
-      onDragEnd={handleDragEnd}
-      whileDrag={
-        isTop
-          ? {
-              scale: 1.025,
-              cursor: 'grabbing',
-            }
-          : undefined
-      }
-      initial={
-        depth === 0
-          ? {
-              opacity: 0,
-              scale: 0.94,
-              y: 45,
-            }
-          : false
-      }
-      transition={{
-        type: 'spring',
-        stiffness: 300,
-        damping: 28,
-      }}
-    >
-      <img
-        src={gift.image}
-        alt={gift.name}
-        draggable={false}
-        loading={depth === 0 ? 'eager' : 'lazy'}
-      />
-
-      <div className="gifting__card-shade" />
-
+    <>
       <motion.div
         className="gifting__feedback gifting__feedback--left"
         style={{
@@ -334,20 +221,141 @@ function SwipeCard({
         <span>sim, por favor</span>
         <strong>{gift.rightMessage}</strong>
       </motion.div>
+    </>
+  )
+}
 
-      <div className="gifting__card-info">
-        <div>
-          <span>{gift.type}</span>
-          <h3>{gift.name}</h3>
+function SwipeCard({
+  gift,
+  depth,
+  isTop,
+  onSwipe,
+}) {
+  const controls = useAnimationControls()
+  const x = useMotionValue(0)
+  const prefersReducedMotion = useReducedMotion()
+
+  const rotate = useTransform(
+    x,
+    [-300, 0, 300],
+    [-14, 0, 14]
+  )
+
+  const stackScale = 1 - depth * 0.055
+  const stackY = depth * 18
+  const stackRotate =
+    depth === 0 ? 0 : depth % 2 === 0 ? 1 : -1
+
+  const handleDragEnd = async (_, info) => {
+    if (!isTop) return
+
+    const distance = info.offset.x
+
+    if (Math.abs(distance) < SWIPE_THRESHOLD) {
+      await controls.start({
+        x: 0,
+        rotate: 0,
+        transition: {
+          type: 'spring',
+          stiffness: 500,
+          damping: 28,
+        },
+      })
+
+      return
+    }
+
+    const direction = distance > 0 ? 1 : -1
+
+    await controls.start({
+      x: direction * 620,
+      rotate: direction * 18,
+      opacity: 0,
+      transition: prefersReducedMotion
+        ? {
+            duration: 0.2,
+          }
+        : {
+            type: 'spring',
+            stiffness: 280,
+            damping: 24,
+          },
+    })
+
+    onSwipe(gift.id)
+  }
+
+  return (
+    <>
+      <motion.article
+        className={`gifting__card ${
+          isTop ? 'gifting__card--active' : ''
+        }`}
+        style={{
+          x: isTop ? x : 0,
+          rotate: isTop ? rotate : stackRotate,
+          zIndex: gifts.length - depth,
+        }}
+        animate={
+          isTop
+            ? controls
+            : {
+                scale: stackScale,
+                y: stackY,
+                opacity: 1,
+              }
+        }
+        drag={isTop ? 'x' : false}
+        dragDirectionLock
+        dragElastic={0.72}
+        dragMomentum={false}
+        onDragEnd={handleDragEnd}
+        whileDrag={
+          isTop
+            ? {
+                scale: 1.025,
+                cursor: 'grabbing',
+              }
+            : undefined
+        }
+        initial={
+          depth === 0
+            ? {
+                opacity: 0,
+                scale: 0.94,
+                y: 45,
+              }
+            : false
+        }
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 28,
+        }}
+      >
+        <div className="gifting__card-image">
+          <img
+            src={gift.image}
+            alt={gift.name}
+            draggable={false}
+            loading={depth === 0 ? 'eager' : 'lazy'}
+          />
         </div>
 
-        {isTop && (
-          <span className="gifting__card-hint">
-            arraste →
-          </span>
-        )}
-      </div>
-    </motion.article>
+        <div className="gifting__card-info">
+          <div>
+            <span>{gift.type}</span>
+            <h3>{gift.name}</h3>
+          </div>
+        </div>
+      </motion.article>
+
+      <SwipeFeedback
+        gift={gift}
+        x={x}
+        isTop={isTop}
+      />
+    </>
   )
 }
 
@@ -367,7 +375,7 @@ function Gifting() {
     if (swipedIndex === -1) return
 
     setCurrentIndex(
-      (currentIndex + 1) % gifts.length
+      (index) => (index + 1) % gifts.length
     )
   }
 
@@ -501,7 +509,10 @@ function Gifting() {
           className="gifting__message"
           initial={{ opacity: 0, y: 45 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
           transition={{
             duration: 0.9,
             ease: [0.2, 0.7, 0.2, 1],
@@ -521,7 +532,10 @@ function Gifting() {
           className="gifting__action"
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
           transition={{
             duration: 0.8,
             delay: 0.12,
