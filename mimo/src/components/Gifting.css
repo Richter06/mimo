@@ -1,84 +1,574 @@
 .gifting {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr;
-  gap: clamp(2rem, 7vw, 8rem);
-  padding: clamp(6rem, 12vw, 12rem) clamp(1.25rem, 7vw, 7rem);
-  overflow: hidden;
-  background: var(--cream);
-}
-
-.gifting__label {
-  padding-top: 0.4rem;
-}
-
-.gifting__main {
   position: relative;
-  min-height: 58rem;
+  overflow: hidden;
+  padding: clamp(5rem, 10vw, 10rem)
+    clamp(1.25rem, 7vw, 7rem)
+    clamp(6rem, 12vw, 12rem);
+  background: var(--cream);
+  color: var(--ink);
+  isolation: isolate;
+}
+
+.gifting__header {
+  position: relative;
+  z-index: 5;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  background: var(--butter);
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-.gifting__words {
+.gifting__header .eyebrow {
+  color: var(--berry);
+}
+
+.gifting__index {
+  color: rgba(23, 18, 20, 0.42);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   STAGE
+   ========================================================= */
+
+.gifting__stage {
+  position: relative;
+  min-height: clamp(42rem, 67vw, 66rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   BACKGROUND TYPE
+   ========================================================= */
+
+.gifting__background-type {
   position: absolute;
-  left: -0.06em;
-  top: 50%;
+  inset: 50% auto auto 50%;
+  z-index: -1;
   display: flex;
   flex-direction: column;
-  color: rgba(22, 18, 20, 0.08);
+  width: max-content;
+  color: rgba(122, 33, 69, 0.075);
   font-family: var(--display);
-  font-size: clamp(10rem, 25vw, 27rem);
-  line-height: 0.67;
-  letter-spacing: -0.08em;
-  transform: translateY(-50%);
+  font-size: clamp(9rem, 25vw, 29rem);
+  font-weight: 500;
+  line-height: 0.62;
+  letter-spacing: -0.09em;
+  transform: translate(-50%, -50%);
   user-select: none;
-  will-change: transform;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-.gifting__words span:nth-child(2) {
-  margin-left: 0.5em;
-  color: rgba(116, 33, 67, 0.1);
+.gifting__background-type span:nth-child(2) {
+  margin-left: 0.32em;
+  color: rgba(50, 27, 39, 0.08);
 }
 
-.gifting__copy {
+/* =========================================================
+   CARD DECK
+   ========================================================= */
+
+.gifting__deck {
   position: relative;
-  z-index: 1;
-  max-width: 42rem;
-  margin-left: auto;
-  margin-right: clamp(2rem, 8vw, 9rem);
-  padding: 3rem;
+  z-index: 2;
+  width: min(58vw, 43rem);
+  height: min(70vw, 54rem);
+  max-height: 78vh;
+  display: grid;
+  place-items: center;
+  perspective: 1200px;
+}
+
+.gifting__card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--butter);
+  box-shadow:
+    0 2rem 5rem rgba(50, 27, 39, 0.12),
+    0 0.6rem 1.5rem rgba(50, 27, 39, 0.08);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
   will-change: transform, opacity;
 }
 
-.gifting__copy h2 {
-  margin: 0 0 2rem;
-  color: var(--ink);
-  font-family: var(--display);
-  font-size: clamp(3.3rem, 6vw, 6.5rem);
-  font-weight: 500;
-  line-height: 0.83;
-  letter-spacing: -0.06em;
+.gifting__card--active {
+  cursor: grab;
 }
 
-.gifting__copy p {
-  max-width: 25rem;
-  margin: 0 0 2rem;
+.gifting__card:active {
+  cursor: grabbing;
+}
+
+.gifting__card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.gifting__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 1px solid rgba(255, 248, 236, 0.28);
+  pointer-events: none;
+}
+
+.gifting__card-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(23, 18, 20, 0.025) 0%,
+    
+      rgba(23, 18, 20, 0.38) 100%
+    );
+  pointer-events: none;
+}
+
+/* =========================================================
+   SWIPE FEEDBACK
+   ========================================================= */
+
+.gifting__feedback {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  max-width: 70%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid currentColor;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.gifting__feedback span {
+  margin-bottom: 0.25rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.gifting__feedback strong {
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2.4vw, 2.2rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.gifting__feedback--left {
+  left: 1.5rem;
+  color: #fff8ec;
+  background: rgba(50, 27, 39, 0.82);
+  transform: translateY(-50%) rotate(-7deg);
+}
+
+.gifting__feedback--right {
+  right: 1.5rem;
+  color: var(--ink);
+  background: rgba(242, 213, 138, 0.92);
+  transform: translateY(-50%) rotate(7deg);
+}
+
+/* =========================================================
+   CARD INFO
+   ========================================================= */
+
+.gifting__card-info {
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--cream);
+}
+
+.gifting__card-info span:first-child {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: rgba(255, 248, 236, 0.72);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.gifting__card-info h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+
+.gifting__card-hint {
+  flex-shrink: 0;
+  margin-bottom: 0.25rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid rgba(255, 248, 236, 0.4);
+  color: var(--cream);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   SIDE NOTES
+   ========================================================= */
+
+.gifting__side-note {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  width: 10rem;
+}
+
+.gifting__side-note span {
+  color: var(--berry);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.gifting__side-note p {
+  margin: 0;
   color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.gifting__side-note--top {
+  top: 18%;
+  left: 4%;
+}
+
+.gifting__side-note--bottom {
+  right: 3%;
+  bottom: 19%;
+}
+
+/* =========================================================
+   ASTERISK
+   ========================================================= */
+
+.gifting__asterisk {
+  position: absolute;
+  right: 17%;
+  top: 17%;
+  z-index: 4;
+  color: var(--berry);
+  font-family: var(--display);
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1;
+  transform-origin: center;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.gifting__footer {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  gap: clamp(3rem, 10vw, 12rem);
+  align-items: end;
+  margin-top: clamp(4rem, 9vw, 9rem);
+}
+
+.gifting__message-label {
+  margin: 0 0 1.2rem;
+  color: var(--berry);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gifting__message h2 {
+  max-width: 54rem;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  font-weight: 500;
+  line-height: 0.84;
+  letter-spacing: -0.065em;
+}
+
+.gifting__message h2 em {
+  color: var(--berry);
+  font-style: italic;
+}
+
+.gifting__action {
+  padding-bottom: 0.5rem;
+}
+
+.gifting__action > p {
+  max-width: 25rem;
+  margin: 0 0 1.8rem;
+  color: var(--muted);
+  font-size: 0.88rem;
   line-height: 1.65;
 }
 
+.gifting__occasions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 2rem;
+}
+
+.gifting__occasions span {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgba(50, 27, 39, 0.16);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.gifting__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: fit-content;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.gifting__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transform-origin: left;
+}
+
+.gifting__link-arrow {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(23, 18, 20, 0.25);
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .gifting__stage {
+    min-height: 50rem;
+  }
+
+  .gifting__deck {
+    width: min(66vw, 38rem);
+    height: min(80vw, 48rem);
+  }
+
+  .gifting__side-note--top {
+    left: 0;
+  }
+
+  .gifting__side-note--bottom {
+    right: 0;
+  }
+
+  .gifting__footer {
+    gap: 4rem;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 760px) {
   .gifting {
+    padding-top: 5rem;
+  }
+
+  .gifting__header {
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .gifting__index {
+    max-width: 9rem;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .gifting__stage {
+    min-height: 39rem;
+    display: block;
+    padding: 3rem 0 4rem;
+  }
+
+  .gifting__background-type {
+    top: 43%;
+    left: 50%;
+    font-size: clamp(7rem, 29vw, 12rem);
+    line-height: 0.66;
+  }
+
+  .gifting__deck {
+    width: min(78vw, 25rem);
+    height: min(108vw, 34rem);
+    margin: 0 auto;
+  }
+
+  .gifting__card-info {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .gifting__card-info h3 {
+    font-size: clamp(1.8rem, 9vw, 2.7rem);
+  }
+
+  .gifting__card-hint {
+    display: none;
+  }
+
+  .gifting__feedback {
+    max-width: 75%;
+  }
+
+  .gifting__feedback--left {
+    left: 0.8rem;
+  }
+
+  .gifting__feedback--right {
+    right: 0.8rem;
+  }
+
+  .gifting__feedback strong {
+    font-size: 1.35rem;
+  }
+
+  .gifting__side-note {
+    width: 8rem;
+  }
+
+  .gifting__side-note--top {
+    top: 0;
+    left: 0;
+  }
+
+  .gifting__side-note--bottom {
+    right: 0;
+    bottom: 0;
+  }
+
+  .gifting__asterisk {
+    top: 7%;
+    right: 8%;
+    font-size: 3rem;
+  }
+
+  .gifting__footer {
     grid-template-columns: 1fr;
+    gap: 3.5rem;
+    margin-top: 2rem;
   }
 
-  .gifting__main {
-    min-height: 40rem;
+  .gifting__message h2 {
+    max-width: 25rem;
+    font-size: clamp(3.2rem, 14vw, 5rem);
   }
 
-  .gifting__copy {
-    margin: 0;
-    padding: 2rem;
+  .gifting__action {
+    max-width: 25rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .gifting__stage {
+    min-height: 36rem;
+  }
+
+  .gifting__deck {
+    width: 82vw;
+    height: 105vw;
+  }
+
+  .gifting__side-note {
+    width: 7rem;
+  }
+
+  .gifting__side-note p {
+    font-size: 0.62rem;
+  }
+
+  .gifting__background-type {
+    font-size: 27vw;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .gifting__card {
+    transition: none !important;
+  }
+
+  .gifting__feedback {
+    transform: translateY(-50%);
   }
 }
