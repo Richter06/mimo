@@ -1,0 +1,85 @@
+.orders {
+  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 7vw, 7rem);
+  color: var(--cream);
+  background: var(--berry);
+}
+
+.orders__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 249, 236, 0.28);
+}
+
+.orders__top span {
+  color: rgba(255, 249, 236, 0.68);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.orders__body {
+  display: grid;
+  grid-template-columns: 1.5fr 0.7fr;
+  align-items: end;
+  gap: 4rem;
+  padding-top: clamp(4rem, 8vw, 8rem);
+}
+
+.orders h2 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--display);
+  font-size: clamp(5rem, 12vw, 12rem);
+  font-weight: 500;
+  line-height: 0.75;
+  letter-spacing: -0.075em;
+}
+
+.orders h2 span {
+  display: block;
+  margin-left: 0.45em;
+  color: var(--butter);
+  font-style: italic;
+}
+
+.orders__action {
+  padding-bottom: 0.5rem;
+}
+
+.orders__action p {
+  max-width: 21rem;
+  margin: 0 0 2rem;
+  color: rgba(255, 249, 236, 0.72);
+  line-height: 1.65;
+}
+
+.orders__action a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--cream);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: gap 220ms ease;
+}
+
+.orders__action a:hover,
+.orders__action a:focus-visible {
+  gap: 1rem;
+}
+
+@media (max-width: 760px) {
+  .orders__top {
+    flex-direction: column;
+  }
+
+  .orders__body {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
