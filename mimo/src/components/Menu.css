@@ -1,0 +1,132 @@
+.menu {
+  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 7vw, 7rem);
+  color: var(--cream);
+  background: var(--plum);
+}
+
+.menu__intro {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 0.8fr;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+.menu__intro h2 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--display);
+  font-size: clamp(4rem, 9vw, 9rem);
+  font-weight: 500;
+  line-height: 0.78;
+  letter-spacing: -0.065em;
+}
+
+.menu__intro h2 span {
+  display: block;
+  margin-left: 16%;
+  color: var(--rose);
+  font-style: italic;
+}
+
+.menu__intro > p:last-child {
+  max-width: 19rem;
+  margin: 0 0 0 auto;
+  color: rgba(255, 249, 236, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.product:nth-child(2) {
+  margin-top: clamp(3rem, 9vw, 9rem);
+}
+
+.product__image-wrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 0.82;
+  background: #2d1824;
+}
+
+.product__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 500ms ease;
+}
+
+.product__arrow {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--cream);
+  font-size: 1.2rem;
+  transform: translateY(0);
+  transition: transform 300ms ease;
+}
+
+.product__image-wrap:hover .product__image {
+  transform: scale(1.06);
+  filter: saturate(1.08);
+}
+
+.product__image-wrap:hover .product__arrow {
+  transform: translate(0.2rem, -0.2rem) rotate(6deg);
+}
+
+.product__meta {
+  padding-top: 1.15rem;
+}
+
+.product__meta p {
+  margin: 0 0 0.35rem;
+  color: rgba(255, 249, 236, 0.5);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.product__meta h3 {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 2.6vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+@media (max-width: 760px) {
+  .menu__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .menu__intro > p:last-child {
+    margin: 0;
+  }
+
+  .menu__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .product__image-wrap {
+    aspect-ratio: 1;
+  }
+}
