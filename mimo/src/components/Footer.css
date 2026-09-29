@@ -1,0 +1,56 @@
+.site-footer {
+  padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 7vw, 7rem) 1.5rem;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.site-footer__brand {
+  font-family: var(--display);
+  font-size: clamp(8rem, 24vw, 25rem);
+  line-height: 0.62;
+  letter-spacing: -0.08em;
+  transform: translateX(-0.05em);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  margin-top: clamp(5rem, 10vw, 10rem);
+}
+
+.site-footer__links a {
+  color: var(--cream);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.72;
+  transition: opacity 200ms ease;
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  opacity: 1;
+}
+
+.site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 249, 236, 0.18);
+  color: rgba(255, 249, 236, 0.45);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .site-footer__bottom {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
